@@ -4,7 +4,7 @@ const mognoose = require('mongoose')
 //Schema
 const genreSchema = new mongoose.Schema({
     genreId: {
-        type: String, 
+        type: Number, 
         required: true,
     },
 
@@ -20,5 +20,3 @@ const genreSchema = new mongoose.Schema({
 const Genre = mongoose.model('Genre', genreSchema);
 module.exports = { Genre }
 
-"GenreId": 2,
-    "Name"
