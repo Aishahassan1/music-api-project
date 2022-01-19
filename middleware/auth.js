@@ -6,7 +6,7 @@ const {User} =  require('../models/user');
 
 const jwtOptions = {
      jwtFromRequest: passportJwt.ExtractJwt.fromAuthHeaderWithScheme('jwt'),
-     secretOrKey: 'secret token'
+     secretOrKey: 'secret code'
 }
 
 const strategy = new  passportJwt.Strategy(jwtOptions, (jwtPayload, next)=>  {
