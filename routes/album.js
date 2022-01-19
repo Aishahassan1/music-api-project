@@ -1,9 +1,18 @@
-const express = require('express');
-const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const express = require('express');
+const { Album } = require('../models/album')
+
+router.get('/album/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  Album.find({}, function (err, album) {
+    if(err) {
+      res.status(404).json({
+        message: "album not found"
+      });
+    } else {
+      res.json(album)
+    }
+  })
+})
+
 
 module.exports = router;

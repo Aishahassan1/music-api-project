@@ -8,7 +8,6 @@ var app = require('../app');
 var debug = require('debug')('assessed-music-api:server');
 var http = require('http');
 
-mongodb+srv://aishahassan:<password>@cluster0.mtwuu.mongodb.net/
 
 /**
  * Get port from environment and store in Express.

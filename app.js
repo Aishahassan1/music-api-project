@@ -1,31 +1,31 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-// var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose')
+const passport = require('passport') //--> NEEDED IN AUTHENTICATION STAGE
+const albumRoutes = require('./routes/album')
+const passportLocalMongoose = require('passportlocalmongoose') ;
+const artistRoutes = require('./routes/artist');
+const genreRoutes = require('./routes/genre');
+const trackRoutes = require('./routes/track');
+const userRoutes =  require('./routes/user'); 
+// const swaggerDocument = require('./swagger.json'); --> I KNOW I WILL NEED THIS FOR DOCUMENTATION BUT WILL I NEED THE OHTER ONE SINCE THERE WILL BE  NO USER INTERFACE?
+// const swaggerUi = require('swagger-ui-express'); --> not necessary unless you want a user interface for your documentation
+require('./middleware/auth.js');
 
-var indexRouter = require('./routes/album');
-var usersRouter = require('./routes/artist');
+const app = express();
 
-var app = express();
-
-// view engine setup --> don't think I need these two lines below in mine! can delete
-app.set('views', path.join(__dirname, 'views')); 
-app.set('view engine', 'jade');
-
-// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use('/users', usersRouter); 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
-// catch 404 and forward to error handler
+
+
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
