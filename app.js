@@ -17,7 +17,12 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/user', userRouter); 
+app.use('/api', userRouter); 
+app.use('/api', albumRouter); 
+app.use('/api', artistRouter); 
+app.use('/api', trackRouter); 
+app.use('/api', genreRouter); 
+
 
 
 
