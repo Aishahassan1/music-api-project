@@ -5,7 +5,7 @@ const passport = require('passport')
 const router = express.Router()
 
 router.get('/artist/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
-  Artist.findOne({AlbumId: parseInt(req.params.id)}, function (err, artist) {
+  Artist.findOne({ArtistId: parseInt(req.params.id)}, function (err, artist) {
     if(err) {
       res.status(404).json({
         message: "artist not found"

@@ -6,7 +6,7 @@ const passport = require('passport')
 const router = express.Router()
 
 router.get('/track/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
-  Track.findOne({AlbumId: parseInt(req.params.id)}, function (err, track) {
+  Track.findOne({TrackId: parseInt(req.params.id)}, function (err, track) {
     if(err) {
       res.status(404).json({
         message: "track not found"
