@@ -31,6 +31,10 @@ const trackSchema = new mongoose.Schema({
         type: Number, 
         required: true,
     },
+    mediaTypeId: {
+        type: Number, 
+        required: true,
+    }
  });
 
 
