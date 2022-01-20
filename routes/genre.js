@@ -1,6 +1,9 @@
 
 const express = require('express');
 const { Genre } = require('../models/genre');
+const passport = require('passport') 
+
+const router = express.Router()
 
 router.get('/genre', passport.authenticate('jwt', {session: false}), (req, res) => {
   Genre.find({}, function (err, genre) {

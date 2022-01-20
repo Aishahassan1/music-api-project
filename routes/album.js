@@ -1,6 +1,9 @@
 
 const express = require('express');
 const { Album } = require('../models/album')
+const passport = require('passport') 
+
+const router = express.Router()
 
 router.get('/album/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
   Album.find({}, function (err, album) {

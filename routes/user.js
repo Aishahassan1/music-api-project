@@ -1,14 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const jwt =  require('jsonwebtoken')
 const { User } = require('../models/user');
+const passport = require('passport') 
 
 const jwtOptions = {    
   secretOrKey: 'secret code'
 }
-
-const router =  express.Router();
-
 router.post('/register', (req, res) => {
   if (req.body.username && req.body.password) {
         User.findOne({username: req.body.username}, (err, user) => {

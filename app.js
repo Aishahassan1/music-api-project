@@ -4,11 +4,11 @@ const path = require('path');
 const mongoose = require('mongoose')
 const passport = require('passport') //--> NEEDED IN AUTHENTICATION STAGE
 const albumRoutes = require('./routes/album')
-const passportLocalMongoose = require('passportlocalmongoose') ;
+const passportLocalMongoose = require('passport-local-mongoose') ;
 const artistRoutes = require('./routes/artist');
 const genreRoutes = require('./routes/genre');
 const trackRoutes = require('./routes/track');
-const userRoutes =  require('./routes/user'); 
+const userRouter =  require('./routes/user'); 
 // const swaggerDocument = require('./swagger.json'); --> I KNOW I WILL NEED THIS FOR DOCUMENTATION BUT WILL I NEED THE OHTER ONE SINCE THERE WILL BE  NO USER INTERFACE?
 // const swaggerUi = require('swagger-ui-express'); --> not necessary unless you want a user interface for your documentation
 require('./middleware/auth.js');

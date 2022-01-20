@@ -1,5 +1,8 @@
 const express = require('express');
 const { Artist } = require('../models/artist')
+const passport = require('passport') 
+
+const router = express.Router()
 
 router.get('/artist/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
   Artist.find({}, function (err, artist) {

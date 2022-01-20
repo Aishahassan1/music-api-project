@@ -1,8 +1,9 @@
 
 const express = require('express');
 const { Track } = require('../models/track');
+const passport = require('passport') 
 
-
+const router = express.Router()
 
 router.get('/track/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
   Track.find({}, function (err, track) {
@@ -36,6 +37,6 @@ router.post('/track', passport.authenticate('jwt', {session: false}), async (req
   } else {
       res.status(400).json({ message: "expected full track details" })
   }
-
+})
 
 module.exports = router;
