@@ -9,7 +9,7 @@ ISDB Music database API
 - User stories
 - Planning and development process
 - Description of functions
-- Unsolved problems
+- Unsolved problems/issues
 
 ## Project description
 

@@ -10,7 +10,7 @@ const genreRouter = require('./routes/genre');
 const trackRouter = require('./routes/track');
 const userRouter =  require('./routes/user'); 
 require('./middleware/auth')
-mongoose.connect(process.env.MONGO_URI)
+mongo.connect(process.env.MONGO_URI)
 
 // const swaggerDocument = require('./swagger.json'); --> I KNOW I WILL NEED THIS FOR DOCUMENTATION BUT WILL I NEED THE OHTER ONE SINCE THERE WILL BE  NO USER INTERFACE?
 // const swaggerUi = require('swagger-ui-express'); --> not necessary unless you want a user interface for your documentation
