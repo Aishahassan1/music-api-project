@@ -41,7 +41,7 @@ ISDB Music database API
 
 ## Planning and development process
 
-- Started by writing my user stories so that it is clear as to what the end goal was for the project in terms of functionality
+- I started by writing my user stories so that it is clear as to what the end goal was for the project in terms of functionality
 - I then proceeded to install all the dependencies which can be found in the package.json files, they inlcude:
   jsonwebtoken
   mongoose
