@@ -3,17 +3,17 @@ const mongoose = require('mongoose')
 
 //Schema
 const albumSchema = new mongoose.Schema({
-    albumId: {
+    AlbumId: {
         type: Number, 
         required: true,
     },
 
-    title: {
+    Title: {
         type: String,
         required: true
     },
 
-    artistId: {
+    ArtistId: {
         type: Number,
         required: true
     },

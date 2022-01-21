@@ -5,7 +5,7 @@ const passport = require('passport')
 
 const router = express.Router()
 
-router.get('/album/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.get('/album/:id', passport.authenticate('jwt', {session: false}),  (req, res) => {
   Album.findOne({AlbumId: parseInt(req.params.id)}, function (err, album) {
     if(err) {
       res.status(404).json({
@@ -19,3 +19,4 @@ router.get('/album/:id', passport.authenticate('jwt', {session: false}), (req, r
 
 
 module.exports = router;
+

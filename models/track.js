@@ -3,35 +3,39 @@ const mongoose = require('mongoose')
 
 //Schema
 const trackSchema = new mongoose.Schema({
-    name: {
+    Name: {
         type: String, 
         required: true,
     },
-    albumId: {
+    AlbumId: {
         type: Number, 
         required: true,
     },
-    genreId: {
+    GenreId: {
         type: Number, 
         required: true,
     },
-    composer: {
+    Composer: {
         type: String, 
         required: true,
     },
-    duration: {
+    Duration: {
         type: Number, 
         required: true,
     },
-    size: {
+    Size: {
         type: Number, 
         required: true,
     },
-    price: {
+    Price: {
         type: Number, 
         required: true,
     },
-    mediaTypeId: {
+    MediaTypeId: {
+        type: Number, 
+        required: true,
+    },
+    TrackId: {
         type: Number, 
         required: true,
     }

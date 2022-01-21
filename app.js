@@ -2,13 +2,14 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose')
-const passport = require('passport') //--> NEEDED IN AUTHENTICATION STAGE
+const passport = require('passport') 
 const albumRouter = require('./routes/album')
 const passportLocalMongoose = require('passport-local-mongoose') ;
 const artistRouter = require('./routes/artist');
 const genreRouter = require('./routes/genre');
 const trackRouter = require('./routes/track');
 const userRouter =  require('./routes/user'); 
+require('./middleware/auth')
 mongoose.connect(process.env.MONGO_URI)
 
 // const swaggerDocument = require('./swagger.json'); --> I KNOW I WILL NEED THIS FOR DOCUMENTATION BUT WILL I NEED THE OHTER ONE SINCE THERE WILL BE  NO USER INTERFACE?
@@ -40,7 +41,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.end()
 });
 
 module.exports = app;
+

@@ -3,12 +3,12 @@ const mongoose = require('mongoose')
 
 //Schema
 const genreSchema = new mongoose.Schema({
-    genreId: {
+    GenreId: {
         type: Number, 
         required: true,
     },
 
-    name: {
+    Name: {
         type: String, 
         required: true,
     },

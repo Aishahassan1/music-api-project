@@ -12,7 +12,9 @@ const jwtOptions = {
 const strategy = new  passportJwt.Strategy(jwtOptions, (jwtPayload, next)=>  {
     User.findOne({username: jwtPayload.username}, (err, user) => {
        if (err) { next(null, false) }
-       else {  next(null, user) }
+       else { 
+           console.log(user)
+        next(null, user) }
     })
     
 })
