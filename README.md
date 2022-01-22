@@ -4,12 +4,12 @@ ISDB Music database API
 
 ## Table of contents
 
-- Project description
-- List of technologies used
-- User stories
-- Planning and development process
-- Description of functions
-- Unsolved problems/issues
+1. Project description
+1. List of technologies used
+1. User stories
+1. Planning and development process
+1. Description of functions
+1. Unsolved problems/issues
 
 ## Project description
 
