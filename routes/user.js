@@ -1,57 +1,53 @@
 const express = require('express');
+
 const router = express.Router();
-const jwt =  require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 const { User } = require('../models/user');
-const passport = require('passport') 
 
-const jwtOptions = {    
-  secretOrKey: 'secret code'
-}
+const jwtOptions = {
+  secretOrKey: 'secret code',
+};
 router.post('/register', (req, res) => {
-if (req.body.username && req.body.password) {
-  User.findOne({username: req.body.username}, (err, user) => {
-   if (err) { res.status(401).json(err) }
-    else if(user) { res.status(401).json({ message: 'username is in use'})}
-     else { const newUser =  new User({ username: req.body.username })
-      User.register(
-        newUser, 
-        req.body.password,
-        (err) => {
-        if (err) { res.status(401).json(err) }
-          else{
-          res.status(201).json({message: "registration successful" })
-           }
-         })
-        }
-      })
+  if (req.body.username && req.body.password) {
+    User.findOne({ username: req.body.username }, (err, user) => {
+      if (err) { res.status(401).json(err); } else if (user) { res.status(401).json({ message: 'username is in use' }); } else {
+        const newUser = new User({ username: req.body.username });
+        User.register(
+          newUser,
+          req.body.password,
+          (err) => {
+            if (err) { res.status(401).json(err); } else {
+              res.status(201).json({ message: 'registration successful' });
+            }
+          },
+        );
+      }
+    });
   } else {
-      res.status(401).json({ message: 'missing username or password'})
+    res.status(401).json({ message: 'missing username or password' });
   }
-})
+});
 
-  router.post("/login", (req, res) => {
-
-     if (req.body.username && req.body.password) {
-        User.findOne({username: req.body.username}, (err, user) => {
+router.post('/login', (req, res) => {
+  if (req.body.username && req.body.password) {
+    User.findOne({ username: req.body.username }, (err, user) => {
       if (user) {
         user.authenticate(req.body.password, (err, user) => {
-      if (err) {
-        res.status(401).json({ message: 'invalid username or password'})
-         }else {
-          const unique_identifier = {username: user.username};
-          const token = jwt.sign(unique_identifier, jwtOptions.secretOrKey);
-          res.status(200).json({ message: `welcome, ${user.username}`, token: token })
-         }
-        })
-            } else {
-                res.status(401).json({ message: 'invalid username or password'})
-            }
-        })
-         
-     } else {
-         res.status(400).json({ message: 'missing username or password'})
-     }
-})
+          if (err) {
+            res.status(401).json({ message: 'invalid username or password' });
+          } else {
+            const unique_identifier = { username: user.username };
+            const token = jwt.sign(unique_identifier, jwtOptions.secretOrKey);
+            res.status(200).json({ message: `welcome, ${user.username}`, token });
+          }
+        });
+      } else {
+        res.status(401).json({ message: 'invalid username or password' });
+      }
+    });
+  } else {
+    res.status(400).json({ message: 'missing username or password' });
+  }
+});
 
-
-  module.exports = router;
+module.exports = router;
