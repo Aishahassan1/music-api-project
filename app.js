@@ -1,8 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
-// const path = require('path');
 const mongoose = require('mongoose');
-// const passport = require('passport'); 
+const passport = require('passport'); 
 const albumRouter = require('./routes/album');
 const passportLocalMongoose = require('passport-local-mongoose');
 const artistRouter = require('./routes/artist');

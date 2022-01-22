@@ -20,15 +20,15 @@ router.get('/track/:id', passport.authenticate('jwt', {session: false}), (req, r
 router.post('/track', passport.authenticate('jwt', {session: false}), async (req, res) => {
   if (req.body.name && req.body.price && req.body.albumId && req.body.genreId && req.body.composer && req.body.duration && req.body.size && req.body.mediaTypeId && req.body.TrackId) {
       const product = new Track({
-          Name: req.body.name,
-          Price: req.body.price,
-          AlbumId: req.body.albumId,
-          GenreId: req.body.genreId,
-          Composer: req.body.composer, 
-          Duration: req.body.duration,
+          Name: req.body.Name,
+          Price: req.body.Price,
+          AlbumId: req.body.AlbumId,
+          GenreId: req.body.GenreId,
+          Composer: req.body.Composer, 
+          Duration: req.body.Duration,
           Size: req.body.Size,
-          MediaTypeId: req.body.mediaTypeId,
-          TrackId: req.body.trackId
+          MediaTypeId: req.body.MediaTypeId,
+          TrackId: req.body.TrackId
       })
       try {
           const newTrack = await product.save()
