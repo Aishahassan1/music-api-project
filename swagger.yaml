@@ -1,0 +1,415 @@
+openapi: 3.0.3
+info:
+  title: ISDB - internet song API
+  description: API for managing songs stored on the ISDB servers
+  version: 1.0.0
+  contact:
+    name: Aisha Hassan
+    email: some-random-emaiil@some-random-domain.extension
+    url: https://isdb-music-app.herokuapp.com/api/ 
+host: "heroku.com
+servers:
+  - url: http://localhost:3000
+    description: Local development URL
+  - url: https://isdb-music-app.herokuapp.com/
+    description: Production site / deployment site
+tags:
+  - name: Auth
+    description: Authentication operations
+  - name: Album
+    description: Album operations
+  - name: Artist
+    description: Artist operations
+  - name: Genre
+    description: Genre operations
+  - name: Track
+    description: Track operations
+  - name: User
+    description: User operations
+externalDocs:
+  description: Gihub ReadMe
+  url: https://github.com/Aishahassan1/music-api-project#readme
+components:
+  schemas:
+    album:
+      type: Number
+      properties:
+        Albumid:
+          type: integer
+          format: int32
+        AtistId:
+          type: integer
+          format: int32
+        Title:
+          type: string
+      required: 
+        - ArtistId
+        - Title
+        - AlbumId
+      example:
+        albumId: 1
+        title: Balls to the wall
+        artistId: 3
+    albumMissingRequirement:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Expected artistId, albumId and title
+    albumNotFound:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Album not found
+    artist:
+      type: Number
+      properties:
+        ArtistId:
+          type: integer
+          format: int32
+        Name:
+          type: string
+      required: 
+        - ArtistId
+        - Name
+      example:
+        artistId: 3
+        name: Kevin Jones
+    artistMissingRequirement:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Expected artistId and name
+    artisteNotFound:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Artist not found
+    genre:
+      type: Number
+      properties:
+        Genreid:
+          type: integer
+          format: int32
+        Name:
+          type: string
+      required: 
+        - GenreId
+        - Name
+      example:
+        genreId: 5
+        name: Rock 
+    genreMissingRequirement:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Expected genreId and name
+    genreNotFound:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Genre not found
+    track:
+      type: String
+      properties:
+        Genreid:
+          type: integer
+          format: int32
+        Albumid:
+          type: integer
+          format: int32
+        Name:
+          type: string
+        Composter:
+          type: string
+        Duration:
+          type: Number
+        Size:
+          type: Number
+        MediaType:
+          type: Number
+        TrackId:
+          type: Number
+      required: 
+        -Name
+        -GenreId
+        -AlbumId
+        -Composer
+        -Duration
+        -Size
+        -Price
+        -MediaTypeId
+        -TrackId
+        -Name
+      example:
+        genreId: 5
+        name: Rock 
+        albumId: 6
+        composer: Bob Harry
+        duration: 1445
+        size: 987837
+        price: 1.50
+        mediaTypeId: 5
+    trackMissingRequirement:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Expected genreId, albumId, composer, duration, size, price, mediaTypeId, trackId and name
+    trackNotFound:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Track not found
+    trackAdded:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Track added Successfully!
+        
+    user:
+      type: String
+      properties:
+        username:
+          type: string
+      required: 
+        - username
+      example:
+        username: Alice
+    userMissingRequirement:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Expected username and password
+    userNotFound:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: User not found 
+        
+paths:
+  /album/{id}:
+    get:
+      description: returns a single album
+      tags:
+        - Album
+      parameters:
+        - name: id
+          in: path
+          description: ID of album to search for
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/album'
+        '404':
+          description: not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/albumNotFound'
+paths:
+  /artist/{id}:
+    get:
+      description: returns a single artist
+      tags:
+        - artist
+      parameters:
+        - name: id
+          in: path
+          description: ID of artist to search for
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artist'
+        '404':
+          description: not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artistNotFound'
+paths:
+  /genre:
+    get:
+      description: returns all genres 
+      tags:
+        - Genre
+      parameters:
+        - name: id
+          in: path
+          description: genres
+          required: true
+          schema:
+            type: String
+      responses:
+        '200':
+          description: success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genre'
+        '404':
+          description: not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genreNotFound'
+paths:
+  /track/{id}:
+    get:
+      description: returns a single track
+      tags:
+        - Track
+      parameters:
+        - name: id
+          in: path
+          description: ID of track to search for
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/track'
+        '404':
+          description: not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/trackNotFound'
+paths:
+/track
+    post:
+      description: adds a track
+      tags:
+        - Track
+      parameters:
+        - name: id
+          in: path
+          description: Track to add
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/track'
+      responses:
+        '201':
+          description: a track
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/trackAdded'
+        '400':
+          description: missing requirement message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/trackMissingRequirement'
+path:
+  /register:
+    post:
+      description: registers a user
+      tags:
+        - user
+      parameters:
+        - name: id
+          in: path
+          description: registers a user
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: user added success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '400':
+          description: details missing error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Missingdetails'
+        '401':
+          description: invalid details error
+          content:
+          application/json:
+          schema: 
+          $href: '#/components/schemas/invalid'
+paths:
+  /login:
+    post:
+      description: log a user in
+      tags:
+        - user
+      parameters:
+        - name: id
+          in: path
+          description: login a user
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: user logged in
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '400':
+          description: details missing error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Missingdetails'
+        '401':
+          description: invalid details error
+          content:
+          application/json:
+          schema: 
+          $href: '#/components/schemas/invalid'
+          
+  
+        
