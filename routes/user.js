@@ -36,8 +36,8 @@ router.post('/login', (req, res) => {
           if (err) {
             res.status(401).json({ message: 'invalid username or password' });
           } else {
-            const unique_identifier = { username: user.username };
-            const token = jwt.sign(unique_identifier, jwtOptions.secretOrKey);
+            const uniqueIdentifier = { username: user.username };
+            const token = jwt.sign(uniqueIdentifier, jwtOptions.secretOrKey);
             res.status(200).json({ message: `welcome, ${user.username}`, token });
           }
         });
