@@ -58,6 +58,7 @@ ISDB Music database API
 - A main feature used in building this app is the use of authorization. This ensures that only people that have been given access to the database are allowed to gain access.
 - Post and get methods have been used in this app. Th post allows people to send data to the serves. So for example, track uses a POST method because people are able to add new tracks to the database for example. For all other routes GET was the method used. This method allows us to fetch data from the already existing database.
 - The following status codes were used. These gave us feed back when a request was made to the server: 404 (not found), 401 (client request not completed), 201(request suceeded and has resulted in the creation of a resource) and 200 (request has succeeded.).
+- eslint and prettier were installed to help with ensuring the code format was all correct and present. I don't think it is working 100% the way it should as the formating doesn't seem to throw up errors however it does notice if there are additional commas, brackets and unassigned variables that shouldn't be there.
 
 ## Unsolved problems/issues
 

@@ -16,4 +16,3 @@ const User = mongoose.model('User', userSchema)
 
 module.exports = { User }
 
-//DON'T PUT PASSWORD HERE! SECURITY RISK - PASSPORT LOCAL WILL HASH OUT THE PASSWORD

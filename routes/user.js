@@ -8,21 +8,21 @@ const jwtOptions = {
   secretOrKey: 'secret code'
 }
 router.post('/register', (req, res) => {
-  if (req.body.username && req.body.password) {
-        User.findOne({username: req.body.username}, (err, user) => {
+if (req.body.username && req.body.password) {
+  User.findOne({username: req.body.username}, (err, user) => {
    if (err) { res.status(401).json(err) }
     else if(user) { res.status(401).json({ message: 'username is in use'})}
-      else { const newUser =  new User({ username: req.body.username })
-        User.register(
-          newUser, 
-          req.body.password,
-          (err) => {
-          if (err) { res.status(401).json(err) }
-            else{
-            res.status(201).json({message: "registration successful" })
-                }
-              })
-          }
+     else { const newUser =  new User({ username: req.body.username })
+      User.register(
+        newUser, 
+        req.body.password,
+        (err) => {
+        if (err) { res.status(401).json(err) }
+          else{
+          res.status(201).json({message: "registration successful" })
+           }
+         })
+        }
       })
   } else {
       res.status(401).json({ message: 'missing username or password'})
