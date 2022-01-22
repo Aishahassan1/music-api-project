@@ -18,7 +18,7 @@ router.get('/track/:id', passport.authenticate('jwt', {session: false}), (req, r
 });
 
 router.post('/track', passport.authenticate('jwt', {session: false}), async (req, res) => {
-  if (req.body.name && req.body.price && req.body.albumId && req.body.genreId && req.body.composer && req.body.duration && req.body.size && req.body.mediaTypeId && req.body.TrackId) {
+  if (req.body.Name && req.body.Price && req.body.AlbumId && req.body.GenreId && req.body.Composer && req.body.Duration && req.body.Size && req.body.MediaTypeId && req.body.TrackId) {
       const product = new Track({
           Name: req.body.Name,
           Price: req.body.Price,
