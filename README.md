@@ -13,7 +13,7 @@ ISDB Music database API
 
 ## Project description
 
-- I have built a musi API that allows people to register, login and access our music database. People will also be able to add tracks to the API too. One a user registers, with each login, they will be given an authorisation token.
+<p>I have built a music API called ISDB that allows people to register, login and access my music database. People can also be able to add tracks to the API. Once a user registers, with each login, they will be given an authorisation token of which they must use in order to be able to gain access to the database.<p>
 
 ## List of technologies used
 
@@ -28,6 +28,7 @@ ISDB Music database API
 - Heroku
 - Mongodb Atlas
 - Postman
+- eslint
 
 ## User stories
 
@@ -58,8 +59,8 @@ ISDB Music database API
 - A main feature used in building this app is the use of authorization. This ensures that only people that have been given access to the database are allowed to gain access.
 - Post and get methods have been used in this app. Th post allows people to send data to the serves. So for example, track uses a POST method because people are able to add new tracks to the database for example. For all other routes GET was the method used. This method allows us to fetch data from the already existing database.
 - The following status codes were used. These gave us feed back when a request was made to the server: 404 (not found), 401 (client request not completed), 201(request suceeded and has resulted in the creation of a resource) and 200 (request has succeeded.).
-- eslint and prettier were installed to help with ensuring the code format was all correct and present. I don't think it is working 100% the way it should as the formating doesn't seem to throw up errors however it does notice if there are additional commas, brackets and unassigned variables that shouldn't be there.
+- eslint was installed to help with ensuring the code format was all correct. It was a really helpful tool that picked up errors. I think this is a new favourite feature for me as it is alwyas useful to know that your code is formatted well.
 
 ## Unsolved problems/issues
 
-- A major problem I came across was that something seemed to have happened whereby it looked like all the content of the csv files had some how been removed and only one entry seemed to have been in each file. This then meant no matter what I was searching, it would only bring the same result all the time. So I had to re-import the files
+- A major problem I came across was that something seemed to have happened whereby it looked like all the content of the csv files had some how been removed and only one entry seemed to have been in each file. This then meant no matter what I was searching, it would only bring the same result all the time. So I had to re-import the files so the issue was luckily resolved.
