@@ -66,4 +66,4 @@ I then created a github repository and pushed my code from visual studio code up
 
 ## Unsolved problems/issues
 
-<p> A major problem I came across was that something seemed to have happened whereby it looked like all the content of the csv files had some how been removed and only one entry seemed to have been in each file. This then meant no matter what I was searching, it would only bring the same result all the time. So I had to re-import the files so the issue was luckily resolved.</p>
+<p> A big problem I came across was that something seemed to have happened whereby it looked like all the content of the csv files had some how been removed and only one entry seemed to have been in each file. This then meant no matter what I was searching, it would only bring the same result all the time. So I had to re-import the files so the issue was luckily resolved. I also really struggled with Swagger to create documentation. </p>
